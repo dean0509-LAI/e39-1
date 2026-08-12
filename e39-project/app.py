@@ -99,19 +99,19 @@ with tab2:
 
 st.markdown("---")
 
-# 4. 流程圖與架構圖 (SVG 圖片呈現，百分之百避免 Mermaid 渲染錯誤)
+# 4. 流程圖與架構圖 (橫向 SVG 圖片呈現)
 st.subheader("📐 專案圖表與架構說明")
 tab_arch, tab_workflow = st.tabs(["系統架構與人機協作把關機制", "資料處理與清洗流程管線"])
 
 with tab_arch:
     if os.path.exists("architecture.svg"):
-        st.image("architecture.svg", caption="系統架構與人機協作把關機制", use_column_width=True)
+        st.image("architecture.svg", caption="系統架構與人機協作把關機制 (橫向流程圖)", use_column_width=True)
     else:
         st.info("architecture.svg 檔案未找到")
 
 with tab_workflow:
     if os.path.exists("data_workflow.svg"):
-        st.image("data_workflow.svg", caption="資料處理與清洗流程管線", use_column_width=True)
+        st.image("data_workflow.svg", caption="資料處理與清洗流程管線 (橫向流程圖)", use_column_width=True)
     else:
         st.info("data_workflow.svg 檔案未找到")
 
