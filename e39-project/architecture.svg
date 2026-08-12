@@ -1,86 +1,90 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 720" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1250 280" width="100%" height="100%">
   <defs>
-    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.08"/>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000000" flood-opacity="0.08"/>
     </filter>
-    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b"/>
+    <marker id="arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1e293b"/>
     </marker>
   </defs>
 
   <style>
-    .title { font-family: system-ui, -apple-system, sans-serif; font-size: 15px; font-weight: bold; fill: #1e293b; }
-    .node-text { font-family: system-ui, -apple-system, sans-serif; font-size: 13px; fill: #1e293b; font-weight: 500; }
-    .node-subtext { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: #475569; }
+    .title { font-family: system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: bold; fill: #1e293b; text-anchor: middle; }
+    .node-text { font-family: system-ui, -apple-system, sans-serif; font-size: 12px; fill: #1e293b; font-weight: 500; text-anchor: middle; }
+    .node-subtext { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: #475569; text-anchor: middle; }
     .badge { font-family: system-ui, -apple-system, sans-serif; font-size: 10px; font-weight: bold; fill: #ffffff; }
-    .arrow { stroke: #64748b; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    .arrow { stroke: #1e293b; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    .edge-label { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: #1e293b; font-weight: 500; background: #e2e8f0; }
   </style>
 
-  <rect width="100%" height="100%" fill="#ffffff" rx="12"/>
+  <rect width="100%" height="100%" fill="#f8fafc" rx="12"/>
 
-  <!-- 1. 資料來源 -->
-  <g transform="translate(40, 25)">
-    <rect x="0" y="0" width="570" height="95" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4"/>
-    <text x="20" y="24" class="title" fill="#475569">1. 資料來源與輸入</text>
-    <g transform="translate(20, 35)" filter="url(#shadow)">
-      <rect x="0" y="0" width="530" height="45" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
-      <text x="15" y="20" class="node-text">現場感測器 / CSV 原始資料</text>
-      <text x="15" y="35" class="node-subtext">主檔.csv (含髒資料：日期混用、缺失值、重複列)</text>
-    </g>
+  <!-- Subgraph 1: 資料來源與輸入 -->
+  <g transform="translate(30, 20)" filter="url(#shadow)">
+    <rect x="0" y="0" width="220" height="235" rx="6" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+    <text x="110" y="28" class="title">資料來源與輸入</text>
+    <line x1="15" y1="40" x2="205" y2="40" stroke="#cbd5e1" stroke-width="1"/>
+    
+    <rect x="20" y="60" width="180" height="150" rx="6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="110" y="125" class="node-text">現場感測器 / CSV 原始資料</text>
+    <text x="110" y="150" class="node-subtext" font-weight="bold">主檔.csv (含髒資料)</text>
   </g>
 
-  <path d="M 325 130 L 325 165" class="arrow"/>
+  <!-- Arrow 1 -->
+  <path d="M 255 137 L 310 137" class="arrow"/>
 
-  <!-- 2. 自動化運算與 AI 核心 -->
-  <g transform="translate(40, 175)">
-    <rect x="0" y="0" width="570" height="150" rx="8" fill="#f0f9ff" stroke="#38bdf8" stroke-width="1.5"/>
-    <text x="20" y="24" class="title" fill="#0369a1">2. 自動化運算與 AI 核心</text>
+  <!-- Subgraph 2: 自動化運算與 AI 核心 -->
+  <g transform="translate(315, 20)" filter="url(#shadow)">
+    <rect x="0" y="0" width="410" height="235" rx="6" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+    <text x="205" y="28" class="title">自動化運算與 AI 核心</text>
+    <line x1="15" y1="40" x2="395" y2="40" stroke="#cbd5e1" stroke-width="1"/>
     
-    <g transform="translate(20, 38)" filter="url(#shadow)">
-      <rect x="0" y="0" width="250" height="90" rx="6" fill="#ffffff" stroke="#38bdf8" stroke-width="1"/>
-      <text x="15" y="25" class="node-text">資料清洗與校正引擎</text>
-      <text x="15" y="45" class="node-subtext">• 統一日期格式 (YYYY-MM-DD)</text>
-      <text x="15" y="62" class="node-subtext">• 排除 12 筆重複列</text>
-      <text x="15" y="79" class="node-subtext">• 校正 100 倍小數點錯位</text>
-    </g>
+    <!-- Box B -->
+    <rect x="20" y="65" width="175" height="145" rx="6" fill="#e0f2fe" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="107" y="105" class="node-text" font-weight="bold">資料清洗與校正引擎</text>
+    <text x="35" y="135" class="node-subtext" text-anchor="start">• 日期統一格式</text>
+    <text x="35" y="160" class="node-subtext" text-anchor="start">• 排除重複與小數點校正</text>
 
-    <g transform="translate(280, 38)" filter="url(#shadow)">
-      <rect x="0" y="0" width="250" height="90" rx="6" fill="#ffffff" stroke="#8b5cf6" stroke-width="1"/>
-      <text x="15" y="25" class="node-text">AI 智慧分析引擎</text>
-      <text x="15" y="45" class="node-subtext">• 計算每台車架單位成本</text>
-      <text x="15" y="62" class="node-subtext">• 換算單位產出能耗</text>
-      <text x="15" y="79" class="node-subtext">• 識別高成本與異常月份</text>
-    </g>
+    <!-- Arrow between B and C -->
+    <path d="M 195 137 L 215 137" class="arrow" marker-width="4" markerHeight="4"/>
+
+    <!-- Box C -->
+    <rect x="215" y="65" width="175" height="145" rx="6" fill="#ede9fe" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="302" y="105" class="node-text" font-weight="bold">AI 智慧分析引擎</text>
+    <text x="230" y="135" class="node-subtext" text-anchor="start">• 計算單位能耗與車架成本</text>
+    <text x="230" y="160" class="node-subtext" text-anchor="start">• 識別高成本與異常月份</text>
   </g>
 
-  <path d="M 325 335 L 325 370" class="arrow"/>
+  <!-- Arrow 2 -->
+  <path d="M 725 137 L 775 137" class="arrow"/>
 
-  <!-- 3. 人機協作把關 -->
-  <g transform="translate(40, 380)">
-    <rect x="0" y="0" width="570" height="120" rx="8" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
-    <text x="20" y="24" class="title" fill="#b45309">3. 人機協作與把關機制 (Human-in-the-loop)</text>
+  <!-- Subgraph 3: 人機協作與把關機制 -->
+  <g transform="translate(780, 20)" filter="url(#shadow)">
+    <rect x="0" y="0" width="220" height="235" rx="6" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+    <text x="110" y="28" class="title">人機協作與把關機制 Human-in-the-loop</text>
+    <line x1="15" y1="40" x2="205" y2="40" stroke="#cbd5e1" stroke-width="1"/>
     
-    <g transform="translate(20, 38)" filter="url(#shadow)">
-      <rect x="0" y="0" width="530" height="65" rx="6" fill="#ffffff" stroke="#f59e0b" stroke-width="1.5"/>
-      <rect x="15" y="12" width="70" height="20" rx="4" fill="#f59e0b"/>
-      <text x="50" y="26" class="badge" text-anchor="middle">關鍵節點</text>
-      <text x="95" y="27" class="node-text">廠務主管審查與覆核</text>
-      <text x="95" y="47" class="node-subtext">★ 人工覆核前三名高成本焦點，決定調整製程參數或排班計畫</text>
-    </g>
+    <rect x="20" y="60" width="180" height="150" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="110" y="95" class="node-text" font-weight="bold">廠務主管審查與覆核</text>
+    <text x="110" y="115" class="node-subtext" font-weight="bold" fill="#b45309">★ 人工把關關鍵節點</text>
+    <text x="30" y="145" class="node-subtext" text-anchor="start">• 覆核異常項目與前三名焦點</text>
+    <text x="30" y="168" class="node-subtext" text-anchor="start">• 決定是否調整製程或排班</text>
   </g>
 
-  <path d="M 325 510 L 325 545" class="arrow"/>
+  <!-- Arrow 3 with Label -->
+  <path d="M 1000 137 L 1050 137" class="arrow"/>
+  <rect x="1003" y="123" width="44" height="16" fill="#cbd5e1" rx="3"/>
+  <text x="1025" y="134" font-family="system-ui" font-size="9" fill="#1e293b" font-weight="bold" text-anchor="middle">主管確認核可</text>
 
-  <!-- 4. 最終呈現 -->
-  <g transform="translate(40, 555)">
-    <rect x="0" y="0" width="570" height="125" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
-    <text x="20" y="24" class="title" fill="#047857">4. 最終決策與呈現</text>
+  <!-- Subgraph 4: 最終決策與呈現 -->
+  <g transform="translate(1055, 20)" filter="url(#shadow)">
+    <rect x="0" y="0" width="165" height="235" rx="6" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+    <text x="82" y="28" class="title">最終決策與呈現</text>
+    <line x1="15" y1="40" x2="150" y2="40" stroke="#cbd5e1" stroke-width="1"/>
     
-    <g transform="translate(20, 38)" filter="url(#shadow)">
-      <rect x="0" y="0" width="530" height="70" rx="6" fill="#ffffff" stroke="#10b981" stroke-width="1"/>
-      <text x="15" y="25" class="node-text">一頁式 POC 互動儀表板 (Streamlit Cloud)</text>
-      <text x="15" y="45" class="node-subtext">• 業主需求：前三名異常置頂，其餘明細自動收折</text>
-      <text x="15" y="60" class="node-subtext">• 趨勢圖表與 AI 智慧診斷報告</text>
-    </g>
+    <rect x="15" y="60" width="135" height="150" rx="6" fill="#d1fae5" stroke="#10b981" stroke-width="1.5"/>
+    <text x="82" y="105" class="node-text" font-weight="bold">一頁式 POC 互動儀表板</text>
+    <text x="25" y="135" class="node-subtext" text-anchor="start">• 呈現前三名關注焦點</text>
+    <text x="25" y="155" class="node-subtext" text-anchor="start">• 業主需求與 AI 診斷</text>
   </g>
 </svg>

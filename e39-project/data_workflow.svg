@@ -1,70 +1,101 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 680" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1450 280" width="100%" height="100%">
   <defs>
-    <filter id="shadow2" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.08"/>
+    <filter id="shadow2" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000000" flood-opacity="0.08"/>
     </filter>
-    <marker id="arrow2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b"/>
+    <marker id="arrow2" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1e293b"/>
     </marker>
   </defs>
 
   <style>
-    .title { font-family: system-ui, -apple-system, sans-serif; font-size: 15px; font-weight: bold; fill: #1e293b; }
-    .node-text { font-family: system-ui, -apple-system, sans-serif; font-size: 13px; fill: #1e293b; font-weight: 500; }
-    .node-subtext { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: #475569; }
-    .arrow { stroke: #64748b; stroke-width: 2; fill: none; marker-end: url(#arrow2); }
+    .title { font-family: system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: bold; fill: #1e293b; text-anchor: middle; }
+    .node-text { font-family: system-ui, -apple-system, sans-serif; font-size: 12px; fill: #1e293b; font-weight: 500; text-anchor: middle; }
+    .node-subtext { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: #475569; text-anchor: middle; }
+    .arrow { stroke: #1e293b; stroke-width: 2; fill: none; marker-end: url(#arrow2); }
   </style>
 
-  <rect width="100%" height="100%" fill="#ffffff" rx="12"/>
+  <rect width="100%" height="100%" fill="#f8fafc" rx="12"/>
 
-  <!-- Step 1: 載入 -->
-  <g transform="translate(40, 25)">
-    <rect x="0" y="0" width="570" height="90" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4"/>
-    <text x="20" y="24" class="title" fill="#475569">1. 資料載入階段</text>
-    <g transform="translate(20, 35)" filter="url(#shadow2)">
-      <rect x="0" y="0" width="530" height="42" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
-      <text x="15" y="26" class="node-text">讀取原始 CSV 資料 (主檔.csv, 共 2,012 筆)</text>
-    </g>
+  <!-- Step 1: 載入階段 -->
+  <g transform="translate(30, 20)" filter="url(#shadow2)">
+    <rect x="0" y="0" width="200" height="235" rx="6" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+    <text x="100" y="28" class="title">1. 資料載入階段</text>
+    <line x1="15" y1="40" x2="185" y2="40" stroke="#cbd5e1" stroke-width="1"/>
+    
+    <rect x="15" y="60" width="170" height="150" rx="6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="100" y="115" class="node-text" font-weight="bold">讀取原始 CSV 資料</text>
+    <text x="100" y="140" class="node-subtext">(主檔.csv, 共 2,012 筆)</text>
+    <text x="100" y="160" class="node-subtext">包含日、數、金額等髒資料</text>
   </g>
 
-  <path d="M 325 125 L 325 155" class="arrow"/>
+  <path d="M 235 137 L 275 137" class="arrow"/>
 
-  <!-- Step 2: 清洗與校正 -->
-  <g transform="translate(40, 160)">
-    <rect x="0" y="0" width="570" height="150" rx="8" fill="#f0f9ff" stroke="#38bdf8" stroke-width="1.5"/>
-    <text x="20" y="24" class="title" fill="#0369a1">2. 資料清洗與校正引擎</text>
-    <g transform="translate(20, 38)" filter="url(#shadow2)">
-      <rect x="0" y="0" width="530" height="95" rx="6" fill="#ffffff" stroke="#38bdf8" stroke-width="1"/>
-      <text x="15" y="22" class="node-text">• 重複資料排除：drop_duplicates() (移除 12 筆重複)</text>
-      <text x="15" y="42" class="node-text">• 日期標準化：統一為 YYYY-MM-DD (處理三種混用格式)</text>
-      <text x="15" y="62" class="node-text">• 離群值校正：偵測極端值並修正 100 倍小數點錯位</text>
-      <text x="15" y="82" class="node-text">• 缺失值處理：關鍵欄位以中位數填補</text>
-    </g>
+  <!-- Step 2: 清洗與校正引擎 -->
+  <g transform="translate(280, 20)" filter="url(#shadow2)">
+    <rect x="0" y="0" width="600" height="235" rx="6" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+    <text x="300" y="28" class="title">2. 資料清洗與校正引擎</text>
+    <line x1="15" y1="40" x2="585" y2="40" stroke="#cbd5e1" stroke-width="1"/>
+    
+    <!-- 2A -->
+    <rect x="15" y="65" width="130" height="140" rx="6" fill="#e0f2fe" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="80" y="105" class="node-text" font-weight="bold">重複資料排除</text>
+    <text x="80" y="130" class="node-subtext">drop_duplicates()</text>
+    <text x="80" y="150" class="node-subtext">(移除 12 筆重複列)</text>
+
+    <path d="M 148 135 L 163 135" class="arrow" marker-width="4" markerHeight="4"/>
+
+    <!-- 2B -->
+    <rect x="163" y="65" width="130" height="140" rx="6" fill="#e0f2fe" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="228" y="100" class="node-text" font-weight="bold">日期格式標準化</text>
+    <text x="228" y="125" class="node-subtext">統一轉換為 YYYY-MM-DD</text>
+    <text x="228" y="145" class="node-subtext">(處理 0615、6月15日、</text>
+    <text x="228" y="160" class="node-subtext">2026/6/15 三種)</text>
+
+    <path d="M 295 135 L 310 135" class="arrow" marker-width="4" markerHeight="4"/>
+
+    <!-- 2C -->
+    <rect x="310" y="65" width="130" height="140" rx="6" fill="#e0f2fe" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="375" y="100" class="node-text" font-weight="bold">極端離群值與小數點校正</text>
+    <text x="375" y="130" class="node-subtext">(偵測 >30x 中位數異常</text>
+    <text x="375" y="150" class="node-subtext">修正 100 倍小數點錯位)</text>
+
+    <path d="M 442 135 L 457 135" class="arrow" marker-width="4" markerHeight="4"/>
+
+    <!-- 2D -->
+    <rect x="457" y="65" width="128" height="140" rx="6" fill="#e0f2fe" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="521" y="100" class="node-text" font-weight="bold">缺失值填補與處理</text>
+    <text x="521" y="130" class="node-subtext">數值欄位以中位數補齊</text>
+    <text x="521" y="150" class="node-subtext">來源備註補為「未填寫」</text>
   </g>
 
-  <path d="M 325 320 L 325 350" class="arrow"/>
+  <path d="M 885 137 L 925 137" class="arrow"/>
 
   <!-- Step 3: 特徵工程 -->
-  <g transform="translate(40, 355)">
-    <rect x="0" y="0" width="570" height="110" rx="8" fill="#ede9fe" stroke="#8b5cf6" stroke-width="1.5"/>
-    <text x="20" y="24" class="title" fill="#6d28d9">3. 特徵工程與指標計算</text>
-    <g transform="translate(20, 38)" filter="url(#shadow2)">
-      <rect x="0" y="0" width="530" height="55" rx="6" fill="#ffffff" stroke="#8b5cf6" stroke-width="1"/>
-      <text x="15" y="22" class="node-text">• 單位成本 = 金額 ÷ 數量　|　單位能耗 = 耗時分鐘 ÷ 數量</text>
-      <text x="15" y="40" class="node-subtext">完成月份與製程分群彙總，識別成本異常高峰</text>
-    </g>
+  <g transform="translate(930, 20)" filter="url(#shadow2)">
+    <rect x="0" y="0" width="200" height="235" rx="6" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+    <text x="100" y="28" class="title">3. 特徵工程與指標計算</text>
+    <line x1="15" y1="40" x2="185" y2="40" stroke="#cbd5e1" stroke-width="1"/>
+    
+    <rect x="15" y="60" width="170" height="150" rx="6" fill="#ede9fe" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="100" y="95" class="node-text" font-weight="bold">核心指標運算</text>
+    <text x="25" y="125" class="node-subtext" text-anchor="start">• 單位成本 = 金額 ÷ 數量</text>
+    <text x="25" y="150" class="node-subtext" text-anchor="start">• 單位能耗 = 耗時分鐘 ÷ 數量</text>
+    <text x="25" y="175" class="node-subtext" text-anchor="start">• 月份與製程分群彙總</text>
   </g>
 
-  <path d="M 325 475 L 325 505" class="arrow"/>
+  <path d="M 1135 137 L 1175 137" class="arrow"/>
 
   <!-- Step 4: 輸出與應用 -->
-  <g transform="translate(40, 510)">
-    <rect x="0" y="0" width="570" height="120" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
-    <text x="20" y="24" class="title" fill="#047857">4. 輸出與應用</text>
-    <g transform="translate(20, 38)" filter="url(#shadow2)">
-      <rect x="0" y="0" width="530" height="65" rx="6" fill="#ffffff" stroke="#10b981" stroke-width="1"/>
-      <text x="15" y="22" class="node-text">產出淨化後的結構化資料 (cleaned_data.json)</text>
-      <text x="15" y="42" class="node-subtext">支援 Streamlit 雲端儀表板與前端互動展示</text>
-    </g>
+  <g transform="translate(1180, 20)" filter="url(#shadow2)">
+    <rect x="0" y="0" width="235" height="235" rx="6" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+    <text x="117" y="28" class="title">4. 輸出與應用</text>
+    <line x1="15" y1="40" x2="220" y2="40" stroke="#cbd5e1" stroke-width="1"/>
+    
+    <rect x="15" y="60" width="205" height="150" rx="6" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+    <text x="117" y="95" class="node-text" font-weight="bold">產出淨化後的結構化資料</text>
+    <text x="117" y="115" class="node-subtext" font-weight="bold" fill="#047857">(cleaned_data.json)</text>
+    <text x="25" y="145" class="node-subtext" text-anchor="start">• 前三名高成本異常置頂</text>
+    <text x="25" y="165" class="node-subtext" text-anchor="start">• Chart.js 圖表與 AI 診斷</text>
   </g>
 </svg>
