@@ -1,0 +1,104 @@
+svg_content = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 720" width="100%" height="100%">
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <style>
+    .title { font-family: system-ui, -apple-system, sans-serif; font-size: 16px; font-weight: bold; fill: #1e293b; }
+    .subtitle { font-family: system-ui, -apple-system, sans-serif; font-size: 12px; fill: #64748b; }
+    .node-text { font-family: system-ui, -apple-system, sans-serif; font-size: 13px; fill: #1e293b; font-weight: 500; }
+    .node-subtext { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: #475569; }
+    .badge { font-family: system-ui, -apple-system, sans-serif; font-size: 10px; font-weight: bold; fill: #ffffff; }
+    .arrow { stroke: #64748b; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+  </style>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#ffffff" rx="12"/>
+
+  <!-- Subgraph 1: 資料來源 -->
+  <g transform="translate(40, 30)">
+    <rect x="0" y="0" width="570" height="95" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4"/>
+    <text x="20" y="24" class="title" fill="#475569">1. 資料來源與輸入</text>
+    
+    <!-- Node A -->
+    <g transform="translate(20, 35)" filter="url(#shadow)">
+      <rect x="0" y="0" width="530" height="45" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+      <text x="15" y="20" class="node-text">現場感測器 / CSV 原始資料</text>
+      <text x="15" y="35" class="node-subtext">主檔.csv (含髒資料：日期混用、缺失值、重複列)</text>
+    </g>
+  </g>
+
+  <!-- Arrow 1 -->
+  <path d="M 325 135 L 325 170" class="arrow"/>
+
+  <!-- Subgraph 2: 自動化運算與 AI 核心 -->
+  <g transform="translate(40, 180)">
+    <rect x="0" y="0" width="570" height="150" rx="8" fill="#f0f9ff" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="20" y="24" class="title" fill="#0369a1">2. 自動化運算與 AI 核心</text>
+    
+    <!-- Node B -->
+    <g transform="translate(20, 38)" filter="url(#shadow)">
+      <rect x="0" y="0" width="250" height="90" rx="6" fill="#ffffff" stroke="#38bdf8" stroke-width="1"/>
+      <text x="15" y="25" class="node-text">資料清洗與校正引擎</text>
+      <text x="15" y="45" class="node-subtext">• 統一日期格式 (YYYY-MM-DD)</text>
+      <text x="15" y="62" class="node-subtext">• 排除 12 筆重複列</text>
+      <text x="15" y="79" class="node-subtext">• 校正 100 倍小數點錯位</text>
+    </g>
+
+    <!-- Node C -->
+    <g transform="translate(280, 38)" filter="url(#shadow)">
+      <rect x="0" y="0" width="250" height="90" rx="6" fill="#ffffff" stroke="#8b5cf6" stroke-width="1"/>
+      <text x="15" y="25" class="node-text">AI 智慧分析引擎</text>
+      <text x="15" y="45" class="node-subtext">• 計算每台車架單位成本</text>
+      <text x="15" y="62" class="node-subtext">• 換算單位產出能耗</text>
+      <text x="15" y="79" class="node-subtext">• 識別高成本與異常月份</text>
+    </g>
+  </g>
+
+  <!-- Arrow 2 -->
+  <path d="M 325 340 L 325 375" class="arrow"/>
+
+  <!-- Subgraph 3: 人機協作把關 -->
+  <g transform="translate(40, 385)">
+    <rect x="0" y="0" width="570" height="120" rx="8" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="20" y="24" class="title" fill="#b45309">3. 人機協作與把關機制 (Human-in-the-loop)</text>
+    
+    <!-- Node D -->
+    <g transform="translate(20, 38)" filter="url(#shadow)">
+      <rect x="0" y="0" width="530" height="65" rx="6" fill="#ffffff" stroke="#f59e0b" stroke-width="1.5"/>
+      <rect x="15" y="12" width="70" height="20" rx="4" fill="#f59e0b"/>
+      <text x="50" y="26" class="badge" text-anchor="middle">關鍵節點</text>
+      <text x="95" y="27" class="node-text">廠務主管審查與覆核</text>
+      <text x="95" y="47" class="node-subtext">★ 人工覆核前三名高成本焦點，決定調整製程參數或排班計畫</text>
+    </g>
+  </g>
+
+  <!-- Arrow 3 -->
+  <path d="M 325 515 L 325 550" class="arrow"/>
+
+  <!-- Subgraph 4: 最終呈現 -->
+  <g transform="translate(40, 560)">
+    <rect x="0" y="0" width="570" height="125" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+    <text x="20" y="24" class="title" fill="#047857">4. 最終決策與呈現</text>
+    
+    <!-- Node E -->
+    <g transform="translate(20, 38)" filter="url(#shadow)">
+      <rect x="0" y="0" width="530" height="70" rx="6" fill="#ffffff" stroke="#10b981" stroke-width="1"/>
+      <text x="15" y="25" class="node-text">一頁式 POC 互動儀表板 (index.html)</text>
+      <text x="15" y="45" class="node-subtext">• 業主需求：前三名異常置頂，其餘明細自動收折</text>
+      <text x="15" y="60" class="node-subtext">• Chart.js 趨勢圖表與 AI 智慧診斷報告</text>
+    </g>
+  </g>
+
+</svg>
+"""
+
+with open('C:/Users/lmde7/OneDrive/文件/Default Project/e39-project/architecture.svg', 'w', encoding='utf-8') as f:
+    f.write(svg_content)
+
+print("SVG generated successfully!")
